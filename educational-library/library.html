@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>المكتبة | المكتبة التعليمية</title>
+<meta name="description" content="مكتبة عربية للطلاب: كتب ومذكرات وملخصات وامتحانات وكورسات.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Reem+Kufi:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"</script>
+</head>
+<body data-page="library">
+<div id="nav"></div>
+<main>
+
+<div class="container section"><h1 id="libTitle">المكتبة</h1><p class="muted" id="libDesc">تصفح كل الكتب والمذكرات والملخصات.</p>
+<div class="chips" id="catChips"></div>
+<form class="filters" id="filters" role="search">
+<input type="search" id="fq" placeholder="ابحث في المكتبة" aria-label="بحث">
+<select id="fgrade" aria-label="الصف الدراسي"><option value="">كل الصفوف</option></select>
+<select id="fsubject" aria-label="المادة"><option value="">كل المواد</option></select>
+<select id="fsort" aria-label="الترتيب"><option value="new">الأحدث</option><option value="views">الأكثر مشاهدة</option><option value="title">الاسم</option></select></form>
+<p class="muted" id="count" style="margin-bottom:12px"></p><div class="grid" id="results"></div></div>
+</main>
+<div id="foot"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="js/library.js"></script>
+</body>
+</html>

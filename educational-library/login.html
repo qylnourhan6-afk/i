@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تسجيل الدخول | المكتبة التعليمية</title>
+<meta name="description" content="مكتبة عربية للطلاب: كتب ومذكرات وملخصات وامتحانات وكورسات.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Reem+Kufi:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"</script>
+</head>
+<body data-page="login">
+<div id="nav"></div>
+<main>
+
+<div class="auth" id="loginBox"><h1>تسجيل الدخول</h1><p class="muted" style="margin-bottom:20px">أهلًا بعودتك، سجّل دخولك لمتابعة التصفح.</p>
+<div id="msg"></div>
+<form id="loginForm" novalidate>
+<div class="field"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" required dir="ltr"><span class="err"></span></div>
+<div class="field"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required dir="ltr"><span class="err"></span></div>
+<button class="btn primary" type="submit">دخول</button></form>
+<p class="alt"><a href="#" id="showReset">نسيت كلمة المرور؟</a></p>
+<p class="alt">ليس لديك حساب؟ <a href="register.html">أنشئ حسابًا</a></p></div>
+<div class="auth" id="resetBox" hidden><h1>استعادة كلمة المرور</h1><p class="muted" style="margin-bottom:20px">سنرسل رابط إعادة التعيين إلى بريدك.</p>
+<div id="rmsg"></div>
+<form id="resetForm" novalidate><div class="field"><label for="remail">البريد الإلكتروني</label><input id="remail" type="email" required dir="ltr"><span class="err"></span></div>
+<button class="btn primary" type="submit">إرسال الرابط</button></form>
+<p class="alt"><a href="#" id="backLogin">العودة لتسجيل الدخول</a></p></div>
+</main>
+<div id="foot"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

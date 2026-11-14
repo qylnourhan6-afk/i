@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إنشاء حساب | المكتبة التعليمية</title>
+<meta name="description" content="مكتبة عربية للطلاب: كتب ومذكرات وملخصات وامتحانات وكورسات.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Reem+Kufi:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"</script>
+</head>
+<body data-page="register">
+<div id="nav"></div>
+<main>
+
+<div class="auth"><h1>إنشاء حساب</h1><p class="muted" style="margin-bottom:20px">حساب مجاني للوصول إلى كامل المحتوى. بريدك لا يظهر لأي مستخدم آخر.</p>
+<div id="msg"></div>
+<form id="regForm" novalidate>
+<div class="field"><label for="name">الاسم</label><input id="name" autocomplete="name" required maxlength="60"><span class="err"></span></div>
+<div class="field"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" required dir="ltr"><span class="err"></span></div>
+<div class="field"><label for="password">كلمة المرور (8 أحرف على الأقل)</label><input id="password" type="password" autocomplete="new-password" required dir="ltr"><span class="err"></span></div>
+<div class="field"><label for="confirm">تأكيد كلمة المرور</label><input id="confirm" type="password" autocomplete="new-password" required dir="ltr"><span class="err"></span></div>
+<button class="btn primary" type="submit">إنشاء الحساب</button></form>
+<p class="alt">لديك حساب بالفعل؟ <a href="login.html">سجّل الدخول</a></p></div>
+</main>
+<div id="foot"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
+    }
+    function counterOnly() {
+      let d = request.resource.data.diff(resource.data).affectedKeys();
+      return d.hasOnly(['views', 'downloads'])
+        && (!d.hasAny(['views']) || request.resource.data.views == resource.data.views + 1)
+        && (!d.hasAny(['downloads']) || request.resource.data.downloads == resource.data.downloads + 1);
+    }
+
+    match /users/{uid} {
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.role == 'student' && request.resource.data.status == 'active'
+        && request.resource.data.keys().hasOnly(['displayName', 'email', 'role', 'status', 'createdAt']);
+      allow update: if isAdmin() && uid != request.auth.uid;
+      allow delete: if false;
+    }
+    match /books/{id} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (resource.data.published == true && counterOnly());
+    }
+    match /categories/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /downloads/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['bookId', 'uid', 'createdAt'])
+        && request.resource.data.bookId is string;
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+  }
+}
